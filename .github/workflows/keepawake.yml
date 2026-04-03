@@ -1,8 +1,9 @@
 name: Lupper Auto Generator 24/7
+
 on:
   schedule:
-    - cron: '*/5 * * * *' # Inafanya kazi kila baada ya dakika 5
-  workflow_dispatch: # Inaruhusu kuwasha kwa mkono wakati wowote
+    - cron: '*/5 * * * *' # Inajiwasha yenyewe kila baada ya dakika 5, saa 24/7
+  workflow_dispatch:      # Inaruhusu wewe kuwasha kwa mkono (Manual Trigger)
 
 jobs:
   ping_and_generate:
@@ -10,11 +11,9 @@ jobs:
     steps:
       - name: Open Lupper Bot and Generate Code
         run: |
-          # Tunatumia 'curl' kutuma data moja kwa moja kwenye API ya bot yako
-          # Hii inafanya kazi kama vile mtu amejaza namba na kubonyeza 'Generate'
+          echo "🚀 Master Lupin, Injini ya LUPPER-MD inawaka sasa hivi..."
           
-          echo "🚀 Master Lupin, Injini inawaka sasa hivi..."
-          
+          # Hapa tunatuma POST request yenye namba ili Render waone kuna activity
           curl -X POST "https://lupin-md-ad9u.onrender.com/pair" \
           -H "Content-Type: application/x-www-form-urlencoded" \
           --data-urlencode "number=255700000000" \
